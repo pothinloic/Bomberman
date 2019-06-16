@@ -1,37 +1,57 @@
+/*
+** EPITECH PROJECT, 2019
+** OOP_indie_studio_2018
+** File description:
+** main
+*/
+
 #include <iostream>
 #include <irrlicht.h>
-#include "../include/menu.hpp"
+#include "../include/Device.hpp"
+#include "../include/Menu.hpp"
+#include "../include/Cube.hpp"
+#include "../include/Map.hpp"
+#include "../include/Character.hpp"
+#include "../include/Fire.hpp"
 
 using namespace irr;
-
 using namespace core;
 using namespace scene;
 using namespace video;
-using namespace io;
-using namespace gui;
 
 int	main()
 {
-	Menu	mainMenu("../../conf/menu/main.conf");
-	const dimension2d<u32> dim = dimension2d<u32>(1024, 1280);
-	IrrlichtDevice *device = createDevice(EDT_SOFTWARE, dim, 16, false, false, false, 0);
+    Device device;
+    Menu    *menu = new Menu("./conf/menu/main.conf");
+    Character   *player1 = new Character("./media/Character/model/Bomberman.MD3", "./media/Character/texture/WhiteBombermanTextures.png", device);
+    Map *map = new Map(device, player1->getCharacter());
+    bool reset = false;
+    int ttw = 0;
 
-	device->setWindowCaption(L"Bomberman");
-	IVideoDriver* driver = device->getVideoDriver();
-	ISceneManager* smgr = device->getSceneManager();
-	IGUIEnvironment* guienv = device->getGUIEnvironment();
-
-	while (device->run())
-	{
-		const dimension2d<u32> ricdim = dimension2d<u32>(480, 360);
-		driver->beginScene(true, true, SColor(246, 150, 255, 143));
-		video::ITexture* images = driver->getTexture("../../media/ricardo.jpg");
-		driver->draw2DImage(images, core::position2d<s32>(50, 50));
-
-		guienv->drawAll();
-
-		driver->endScene();
-	}
-	device->drop();
-	return 0;
+    while (device.getDevice()->run()) {
+        if (device.switchMenu()) {
+            device.unSwitchMenu();
+            menu = new Menu("./conf/menu/settings.conf");
+        }
+        if (!device.isInGame()) {
+            if (reset == true) {
+                player1 = new Character("./media/Character/model/Bomberman.MD3", "./media/Character/texture/WhiteBombermanTextures.png", device);
+                map->destroy();
+                map = new Map(device, player1->getCharacter());
+                reset = false;
+            }
+            menu->load(device.getDriver());
+            device.load(menu->checkKey(device.getKey(), device));
+            ttw = device.getTime() + 1000;
+        }
+        if (device.isInGame()) {
+            device.load(device.getKey().getKey());
+            player1->walk(device);
+            if (ttw < device.getTime() &&
+                map->checkBomb(device, device.getKey().getVectorKey(), player1))
+                reset = map->setCubeColision(device, player1->getCharacter());
+        }
+    }
+    device.getDevice()->drop();
+    return (0);
 }
