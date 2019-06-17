@@ -4,7 +4,7 @@
 
 /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\
 /\  WINDOWS (and Linux if you can't compile with the instructions above)  /\
-/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\
 
 Change the paths on the CMakeLists.txt (l. 13/14)
 
@@ -16,9 +16,9 @@ Or you can download them on the Official Website
 Vesion 2.4.2 for SFML
 Version 1.8.4 for Irrlicht
 
-/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\
 /\            WINDOWS ONLY            /\
-/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\
 
 1.  Open the project on Visual Studio 2017 (Right click -> Open with Visual Studio)
 On the solution explorator :
@@ -28,9 +28,9 @@ On the solution explorator :
 5.  If no error occurs, use the command "cmake --build ." (in case of error, restart from the point 4)
 6.  You're game has compile, enjoy it !
 
-/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\
 /\          UNIX SYSTEM ONLY          /\
-/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\
 
 1.  Open a terminal on the root path of your project
 2.  Enter the command "cmake ." (if it don't work, try "cmake CMakeLists.txt")
