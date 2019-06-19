@@ -51,3 +51,6 @@ If you can't compile, run the two following commands and restart from the begini
 #####       OUSSENI Ambdouroihaman              #####
 #####       POTHIN Loïc                         #####
 #####################################################
+
+3D Assets from : https://github.com/Romain-P/bomberman
+Block Texture from : purbdcraft.net
